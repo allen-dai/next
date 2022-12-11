@@ -1,0 +1,12 @@
+[package]
+name = "diagnostic_nn"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "4.2.1"
+lazy_static = "1.4.0"
+neural_network = { git = "https://github.com/allen-dai/neural_network" }
+serde = "1.0.149"
