@@ -10,3 +10,7 @@ actix-web = "4.2.1"
 lazy_static = "1.4.0"
 neural_network = { git = "https://github.com/allen-dai/neural_network" }
 serde = "1.0.149"
+
+[dev-dependencies]
+mnist = { git = "https://github.com/Allen-Dai/mnist"}
+rand = "0.8.5"

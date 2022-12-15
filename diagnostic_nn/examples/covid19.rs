@@ -34,6 +34,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         })
         .collect();
 
+    label.iter_mut().for_each(|row| {
+        if row.iter().all(|n| n < &1.0f32) {
+            row.push(1f32);
+        } else {
+            row.push(0f32);
+        }
+    });
+
     let mut train_set = Vec::new();
     let mut train_label = Vec::new();
     let mut test_set = Vec::new();
@@ -55,27 +63,27 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("{:?}", data.len());
     println!("{:?}", label.len());
 
-    //let mut network = Network::from_file("./model/covid19")?;
+    let mut network = Network::from_file("./examples/model/covid19")?;
 
-    let mut network = Network::new(vec![
+    /* let mut network = Network::new(vec![
         Net::Layer(LayerType::Dense(DenseLayer::new(6, 20))),
         Net::Activation(ActivationFn::Sigmoid(Sigmoid::default())),
         Net::Layer(LayerType::Dense(DenseLayer::new(20, 10))),
         Net::Activation(ActivationFn::Sigmoid(Sigmoid::default())),
         Net::Layer(LayerType::Dense(DenseLayer::new(10, 3))),
         Net::Activation(ActivationFn::Sigmoid(Sigmoid::default())),
-    ]);
+    ]); */
 
-    Trainer::cpu(
+    /* Trainer::cpu(
         &mut network,
         MSE {},
         &train_set,
         &train_label,
         0.01f32,
-        100,
+        1000,
         true,
-        "./model/covid19_1",
-    );
+        "./examples/model/covid19",
+    ); */
 
     let mut score = 0;
     for i in 0..test_set.len() {
