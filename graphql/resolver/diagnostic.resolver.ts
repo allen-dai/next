@@ -1,10 +1,10 @@
 import { Resolver, Query, Mutation, Arg, Ctx } from "type-graphql";
-import { DiagnosticType, Diagnostic } from "./model";
+import { DiagnosticType, Diagnostic } from "../schema/diagnostic.schema";
 import { Types } from "mongoose";
 import * as graphql from "../../pages/api/graphql";
 
 @Resolver(DiagnosticType)
-export class DiagnosticResolver {
+export default class DiagnosticResolver {
     @Query(() => [DiagnosticType])
     async listDiagnosticByUserId(@Arg("uid") uid: string) {
         return Diagnostic.find({ uid: new Types.ObjectId(uid) });

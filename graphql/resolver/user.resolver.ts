@@ -1,5 +1,5 @@
 import { Resolver, Query, Mutation, Arg, Ctx } from "type-graphql";
-import { UserType, UserRole, User, Login, UserJwt } from "./model";
+import { UserType, UserRole, User, Login, UserJwt } from "../schema/user.schema";
 import { Types } from "mongoose";
 import * as graphql from "../../pages/api/graphql";
 import bcrypt from "bcrypt";
@@ -7,7 +7,7 @@ import jwt from "jsonwebtoken";
 import { serialize } from "cookie";
 
 @Resolver(UserType)
-export class UserResolver {
+export default class UserResolver {
     @Query(() => UserType)
     async findUserById(@Arg("_id") _id: string) {
         return User.findById(new Types.ObjectId(_id));

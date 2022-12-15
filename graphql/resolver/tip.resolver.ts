@@ -1,10 +1,10 @@
 import { Resolver, Query, Mutation, Arg, Ctx } from "type-graphql";
-import { TipType, Tip } from "./model";
+import { TipType, Tip } from "../schema/tip.schema";
 import { Types } from "mongoose";
 import * as graphql from "../../pages/api/graphql";
 
 @Resolver(TipType)
-export class TipResolver {
+export default class TipResolver {
     @Query(() => [TipType])
     async listTip() {
         return Tip.find()

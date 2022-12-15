@@ -54,9 +54,10 @@ const TipList = () => {
             <Heading>Emergencies</Heading>
             {
                 em.map((item, idx) => {
-                    return <Box>
+                    return <Box
+                        key={idx}
+                    >
                         <Box
-                            key={idx}
                             border="1px"
                             borderColor="blackAlpha.500"
                             mb={1}

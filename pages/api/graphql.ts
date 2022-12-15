@@ -1,13 +1,11 @@
 import { ApolloServer } from "apollo-server-micro";
 import { buildSchema } from "type-graphql";
 import dbConnect from "../../lib/dbConnect";
-import { UserResolver, verifyJwt } from "../../graphql/user/resolver";
-import { DiagnosticResolver } from "../../graphql/diagnostic/resolver";
-import { EmResolver } from "../../graphql/emergency_call/resolver";
-import { TipResolver } from "../../graphql/tip/resolver";
+import { resolvers } from "../../graphql/resolver";
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { UserJwt } from "../../graphql/user/model";
+import { UserJwt } from "../../graphql/schema/user.schema";
 import { serialize } from "cookie";
+import { verifyJwt } from "../../graphql/resolver/user.resolver";
 
 let _ = await dbConnect();
 
@@ -18,8 +16,9 @@ export interface Context {
 }
 
 const schema = await buildSchema({
-    resolvers: [UserResolver, DiagnosticResolver, TipResolver, EmResolver]
+    resolvers: [...resolvers]
 })
+
 const server = new ApolloServer({
     schema,
     context: (ctx: Context) => {

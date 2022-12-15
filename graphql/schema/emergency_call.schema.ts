@@ -1,6 +1,6 @@
 import { ObjectType, Field, InputType } from "type-graphql";
 import { getModelForClass, index, prop, Ref } from "@typegoose/typegoose";
-import { UserType } from "../user/model";
+import { UserType } from "./user.schema";
 
 @ObjectType()
 @index({ createdAt: -1 })
@@ -18,7 +18,7 @@ export class EmType {
     uid!: Ref<UserType>;
 
     @Field(() => String)
-    @prop()
+    @prop({required: true})
     name!: string
 }
 
