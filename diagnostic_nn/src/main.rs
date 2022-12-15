@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 const INPUT_LENGTH: usize = 6;
 
 lazy_static! {
-    static ref NETWORK: Network = Network::from_file("./model/covid19").unwrap();
+    static ref NETWORK: Network = Network::from_file("./examples/model/covid19").unwrap();
 }
 
 #[get("/")]

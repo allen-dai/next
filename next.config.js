@@ -3,7 +3,7 @@ module.exports = {
         return [
             {
                 source: "/api/predict",
-                destination: "http://localhost:8080/predict",
+                destination: "http://127.0.0.1:8080/predict",
             }
         ]
     },
